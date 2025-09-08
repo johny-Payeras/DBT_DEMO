@@ -10,8 +10,8 @@ WITH station AS(
         ,START_STATION_NAME
         ,START_LAT
         ,START_LNG
-    FROM {{ source('source_demo', 'bike') }}
-    WHERE RIDE_ID != 'ride_id'
+    FROM {{ ref('stage_bike') }}
+    --WHERE RIDE_ID != 'ride_id'
     
 )
 

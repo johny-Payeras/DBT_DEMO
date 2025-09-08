@@ -14,8 +14,8 @@ WITH CTE AS(
         ,MONTH(TO_TIMESTAMP(STARTED_AT)) AS MONTH_STARTED_AT
         ,{{season_function('STARTED_AT')}} AS SEASON
 
-    FROM {{ source('source_demo', 'bike') }}
-    WHERE STARTED_AT != 'started_at'
+    FROM {{ ref('stage_bike') }}
+   -- WHERE STARTED_AT != 'started_at'
 
 )
 
