@@ -25,4 +25,4 @@ WITH stage_bike AS(
     WHERE RIDE_ID !='bikeid'
 )
 
-SELECT * FROM stage_bike
+SELECT * FROM stage_bike 
