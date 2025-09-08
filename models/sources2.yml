@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: sales_bikes
+    database: TESTJP  
+    schema: TEST_SCHEMA  
+    tables:
+      - name: SALESTABLE
