@@ -7,3 +7,35 @@ sources:
     tables:
       - name: bike
       - name: weather
+
+
+  - name: sales_bikes
+    database: TESTJP  
+    schema: TEST_SCHEMA  
+    tables:
+      - name: SALESTABLE
+
+
+  - name: crime_data # A unique name for your source system (e.g., 'raw_data', 'production_db')
+    database: US_CRIME # Optional: Specify the database if different from target
+    schema: CYBERSYN # Required: The schema where your raw tables reside
+
+    tables:
+      - name: urban_crime_incident_log # The name of a raw table in your source schema
+
+  - name: ecommerce_source
+    database: TESTJP
+    schema: TEST_SCHEMA
+    tables:
+      - name: ECOMMERCE
+
+  - name: SOURCE_BTC
+    database: BTC 
+    schema: BTC_SCHEMA  
+    tables:
+      - name: BTC
+        freshness: # changed to config in v1.9
+          error_after:
+            count: 2
+            period: hour
+        loaded_at_query: BLOCK_TIMESTAMP

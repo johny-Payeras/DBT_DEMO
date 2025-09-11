@@ -1,0 +1,22 @@
+{{config(
+    materialized='table'
+)}}
+
+
+WITH BTC_FACT AS (
+    SELECT 
+    {{date_part_hour('BLOCK_TIMESTAMP')}} AS TIME_OF_DAY,
+    BLOCK_TIMESTAMP::TIME AS BLOCK_TIME,
+    SUM(FEE)  AS SUM_FEE,
+    AVG(FEE) AS AVG_FEE,
+    IS_COINBASE
+    FROM {{source('SOURCE_BTC','BTC')}}
+    GROUP BY BLOCK_TIMESTAMP,IS_COINBASE
+     
+
+)
+SELECT 
+*
+FROM BTC_FACT
+WHERE  SUM_FEE IS NOT NULL
+ORDER BY BLOCK_TIME DESC

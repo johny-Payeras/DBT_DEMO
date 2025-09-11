@@ -1,0 +1,12 @@
+{% macro date_part_hour(x) %}
+
+ CASE
+        WHEN DATE_PART('HOUR',{{x}}) BETWEEN 00 AND 05 THEN 'TWILIGHT'
+        WHEN DATE_PART('HOUR',{{x}}) BETWEEN 06 AND 11 THEN 'MORNING'
+        WHEN DATE_PART('HOUR',{{x}}) BETWEEN 12 AND 14 THEN 'AFTERNOON'
+        WHEN DATE_PART('HOUR',{{x}}) BETWEEN 15 AND 19 THEN 'EVENING'
+        WHEN DATE_PART('HOUR',{{x}}) BETWEEN 20 AND 23 THEN 'NIGHT'
+        ELSE 'OTHER_TIME'
+    END 
+
+{% endmacro %}
